@@ -35,4 +35,11 @@ public class JobService {
         jobRepo.save(entity);
         return JobResponseDto.builder().msg("Job Created Successfully").build();
     }
+
+    public void deleteJob(Long id)
+    {
+        if(jobRepo.existsById(id)) {
+            jobRepo.deleteById(id);
+        }
+    }
 }

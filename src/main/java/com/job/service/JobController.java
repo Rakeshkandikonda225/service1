@@ -5,10 +5,7 @@ import com.job.service.response.JobResponseDto;
 import com.job.service.service.JobService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequiredArgsConstructor
@@ -20,6 +17,13 @@ public class JobController {
     @PostMapping
     public JobResponseDto createJob(@Valid @RequestBody JobRequestDto dto){
         return service.createJob(dto);
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public JobResponseDto deleteJob(@PathVariable Long id)
+    {
+        service.deleteJob(id);
+        return JobResponseDto.builder().msg("Job Deleted Successfully").build();
     }
 
 }
