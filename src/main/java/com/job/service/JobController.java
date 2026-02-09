@@ -23,7 +23,7 @@ public class JobController {
     public JobResponseDto deleteJob(@PathVariable Long id)
     {
         service.deleteJob(id);
-        return JobResponseDto.builder().msg("Job Deleted Successfully...").build();
+        return JobResponseDto.builder().msg("Job Deleted..").build();
     }
 
 }
